@@ -15,12 +15,13 @@ export const dynamic = "force-dynamic";
 export default async function SearchPage({
   searchParams,
 }: {
-  searchParams: { q?: string; tab?: string };
+  searchParams: Promise<{ q?: string; tab?: string }>;
 }) {
   await requireOnboardedUserProfile();
 
-  const query = searchParams.q || "";
-  const tab = searchParams.tab || "people";
+  const { q, tab: tabParam } = await searchParams;
+  const query = q || "";
+  const tab = tabParam || "people";
   const isHashtagSearch = query.startsWith("#");
 
   let users: Awaited<ReturnType<typeof searchUsers>> = [];

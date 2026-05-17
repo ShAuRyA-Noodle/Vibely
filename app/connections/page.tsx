@@ -11,8 +11,9 @@ export const dynamic = "force-dynamic";
 export default async function ConnectionsRoute({
   searchParams,
 }: {
-  searchParams: { tab?: string };
+  searchParams: Promise<{ tab?: string }>;
 }) {
+  const { tab } = await searchParams;
   await requireOnboardedUserProfile();
 
   const [requests, connections, suggestions] = await Promise.all([
@@ -30,7 +31,7 @@ export default async function ConnectionsRoute({
         requests={requests}
         connections={connections}
         suggestions={suggestions}
-        activeTab={searchParams.tab || "requests"}
+        activeTab={tab || "requests"}
       />
     </section>
   );

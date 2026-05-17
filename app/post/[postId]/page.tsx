@@ -10,10 +10,11 @@ export const dynamic = "force-dynamic";
 export default async function PostPage({
   params,
 }: {
-  params: { postId: string };
+  params: Promise<{ postId: string }>;
 }) {
+  const { postId } = await params;
   await requireOnboardedUserProfile();
-  const post = await getPostById(params.postId);
+  const post = await getPostById(postId);
 
   if (!post) notFound();
 

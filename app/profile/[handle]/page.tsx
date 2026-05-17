@@ -14,16 +14,18 @@ export default async function ProfilePage({
   params,
   searchParams,
 }: {
-  params: { handle: string };
-  searchParams: { tab?: string };
+  params: Promise<{ handle: string }>;
+  searchParams: Promise<{ tab?: string }>;
 }) {
-  const profile = await getProfileByHandle(params.handle);
+  const { handle } = await params;
+  const { tab } = await searchParams;
+  const profile = await getProfileByHandle(handle);
 
   if (!profile) {
     notFound();
   }
 
-  const activeTab = searchParams.tab || "posts";
+  const activeTab = tab || "posts";
   const posts = activeTab === "posts" ? await getProfilePosts(profile.id) : [];
 
   return (

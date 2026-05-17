@@ -17,21 +17,22 @@ export const dynamic = "force-dynamic";
 export default async function ConversationPage({
   params,
 }: {
-  params: { conversationId: string };
+  params: Promise<{ conversationId: string }>;
 }) {
+  const { conversationId } = await params;
   const viewer = await requireOnboardedUserProfile();
   await connectDB();
 
-  if (!Types.ObjectId.isValid(params.conversationId)) notFound();
+  if (!Types.ObjectId.isValid(conversationId)) notFound();
 
   const conv = await Conversation.findOne({
-    _id: params.conversationId,
+    _id: conversationId,
     participants: new Types.ObjectId(viewer.id),
   }).populate("participants");
 
   if (!conv) notFound();
 
-  await markConversationReadAction(params.conversationId);
+  await markConversationReadAction(conversationId);
 
   const otherUser = (conv.participants as any[]).find(
     (p: any) => p._id.toString() !== viewer.id
@@ -40,7 +41,7 @@ export default async function ConversationPage({
   if (!otherUser) notFound();
 
   const otherUserDTO = await serializeUser(otherUser);
-  const { messages } = await getMessages(params.conversationId);
+  const { messages } = await getMessages(conversationId);
 
   return (
     <section className="mx-auto max-w-2xl px-4 py-8">
@@ -59,7 +60,7 @@ export default async function ConversationPage({
         </div>
       </div>
       <MessageThread
-        conversationId={params.conversationId}
+        conversationId={conversationId}
         viewerId={viewer.id}
         initialMessages={messages}
         otherUser={otherUserDTO}
