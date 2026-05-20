@@ -24,7 +24,7 @@
     "next": "15.5.18",
     "next-themes": "^0.3.0",
     "react": "^18",
-    "react-dom": "^18",
+    "react-dom": "^19",
     "react-timeago": "^7.2.0",
     "react-toastify": "^10.0.5",
     "sonner": "^1.4.41",
@@ -34,7 +34,7 @@
   "devDependencies": {
     "@types/node": "^25",
     "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react-dom": "^19",
     "@types/react-timeago": "^4.1.7",
     "eslint": "^8",
     "eslint-config-next": "15.5.18",
