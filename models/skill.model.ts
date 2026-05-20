@@ -37,7 +37,6 @@ const skillSchema = new Schema<ISkillDocument>(
   { timestamps: true }
 );
 
-skillSchema.index({ user: 1 });
 skillSchema.index({ name: 1 });
 skillSchema.index({ user: 1, name: 1 }, { unique: true });
 

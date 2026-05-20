@@ -33,7 +33,6 @@ const hashtagSchema = new Schema<IHashtagDocument>(
   { timestamps: true }
 );
 
-hashtagSchema.index({ name: 1 }, { unique: true });
 hashtagSchema.index({ postCount: -1 });
 
 export const Hashtag: Model<IHashtagDocument> =
