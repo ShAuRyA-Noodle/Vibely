@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@clerk/nextjs": "^5.7.6",
+    "@clerk/nextjs": "^7.3.7",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
@@ -60,6 +60,6 @@
     "@babel/runtime": "^7.26.10",
     "path-to-regexp": "^6.3.0",
     "postcss": "$postcss",
-    "@clerk/clerk-react": "^5.61.6"
+    "@clerk/react": "^6.6.6"
   }
 }
