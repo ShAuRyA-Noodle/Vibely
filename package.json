@@ -27,7 +27,7 @@
     "react-dom": "^19",
     "react-timeago": "^7.2.0",
     "react-toastify": "^10.0.5",
-    "sonner": "^1.4.41",
+    "sonner": "^2.0.7",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
   },
