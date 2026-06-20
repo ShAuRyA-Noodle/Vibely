@@ -500,7 +500,7 @@ export async function createCommentAction(
     body: text,
     parentComment: parentCommentId
       ? new Types.ObjectId(parentCommentId)
-      : null,
+      : undefined,
     depth,
     replyCount: 0,
   });
