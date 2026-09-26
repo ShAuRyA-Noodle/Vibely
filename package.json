@@ -36,7 +36,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19",
     "@types/react-timeago": "^4.1.7",
-    "eslint": "^9",
+    "eslint": "^10",
     "eslint-config-next": "^16.3.6",
     "postcss": "^8.5.28",
     "tailwindcss": "^3.4.1",
